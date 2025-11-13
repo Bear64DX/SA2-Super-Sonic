@@ -135,6 +135,7 @@ void unSuper(unsigned char player) {
 
 	CharacterThrowObject(data, co2);
 	ResetChaosControl(player);
+	ResetWindCutter(player);
 	DeleteSSJiggle(co2S);
 	initJiggleSuperSonic(co2S);
 	data->Status = 0;
@@ -221,6 +222,7 @@ void SuperSonic_ManagerDelete(ObjectMaster* obj)
 	unSuper(pnum);
 	isSuper[pnum] = false;
 	ResetChaosControl(pnum);
+	ResetWindCutter(pnum);
 	ReleaseMDLFile(SuperSonicMdl);
 	Delete_SSAnim();
 }
@@ -511,6 +513,8 @@ void SuperSonic_RunCustomAction(EntityData1* data1, EntityData2* data2, SonicCha
 	if (AllowSuperAttacks && !TwoPlayerMode)
 	{
 		ChaosControl_Management(co2);
+		Check_SonicWind(co2);
+
 	}
 }
 
